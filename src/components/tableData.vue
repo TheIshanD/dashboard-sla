@@ -11,7 +11,7 @@ defineProps({
     <tbody>
       <template v-for="(data, status, index) in productData.data">
         <!-- status -->
-        <tr>
+        <tr :class="calcClassColor(status)">
           <td class="width1" :rowspan="calstatusRowspan(data)">
             {{ status }}
           </td>
@@ -19,15 +19,15 @@ defineProps({
 
         <template v-for="cores in Object.keys(data)">
           <!-- cores -->
-          <tr>
+          <tr :class="calcClassColor(status)">
             <td class="width1" :rowspan="Object.keys(data[cores]).length + 1">
               {{ cores }}
             </td>
           </tr>
 
-          <tr v-for="(productInfo, k) in data[cores]">
+          <tr v-for="(productInfo, k) in data[cores]" :class="calcClassColor(status)">
             <!-- product -->
-            <td class="productColumn">{{ productInfo.Product }}</td>
+            <td>{{ productInfo.Product }}</td>
 
             <!-- Lithography -->
             <td>{{ productInfo.Lithography }}</td>
@@ -81,6 +81,19 @@ export default {
       }
       return sum;
     },
+    calcClassColor(status) {
+      if (status == "Launched") {
+        return "released";
+      } else if (status == "Launched (with IPU)") {
+        return "planned";
+      } else if (status == "Announced") {
+        return "reference";
+      } else if (status == "Discontinued") {
+        return "partial";
+      } else {
+        return "redActual";
+      }
+    }
   },
 };
 </script>
