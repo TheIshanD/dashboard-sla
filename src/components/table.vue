@@ -1,42 +1,19 @@
 <script setup>
 import TableData from "./TableData.vue";
+import HideBar from "./HideBar.vue";
 </script>
 
 <template>
   <div>
     <!-- Hide By status Bar -->
-    <div class="hideBar">
-      <label class="hideLabel"> Hide: </label>
-      <div class="checkbox">
-        <!-- All status -->
-        <input
-          :id="productDataBystatus.status"
-          type="checkbox"
-          class="styled"
-          :value="productDataBystatus.status"
-          @click="hideShowALLstatus"
-          v-model="hidestatus"
-        />
-        <label :for="productDataBystatus.status">All statuses</label>
-
-        <!-- Dynamic status -->
-        <div v-for="status in productDataBystatus.status" :key="`${status}`">
-          <input
-            :id="`${status}`"
-            type="checkbox"
-            class="styled"
-            :value="status"
-            v-model="hidestatus"
-          />
-          <label :for="`${status}`">
-            {{ status }}
-          </label>
-        </div>
-      </div>
-    </div>
+    <HideBar
+      :product-data="productDataBystatus"
+      :parent-data="this"
+      @clearedAll="hideShowALLstatus"
+    />
 
     <!-- Main Table Design -->
-    <TableData :product-data="productDataBystatus"/>
+    <TableData :product-data="productDataBystatus" />
     <!-- End of Table Design -->
   </div>
 </template>
@@ -109,7 +86,6 @@ export default {
   },
 };
 </script>
-
 
 <style scoped>
 .fas.fa-times {
