@@ -8,24 +8,28 @@ defineProps({
 <template>
   <!-- Hide By status Bar -->
   <div class="hideBar">
-    <label class="hideLabel"> Hide: </label>
+    <label class="hideLabel">Hide: </label>
     <div class="checkbox">
       <!-- All status -->
-      <div>
-        <input
-          :id="productData.status"
-          type="checkbox"
-          class="styled"
-          :value="productData.status"
-          @click="$emit('clearedAll')"
-          v-model="parentData.allCheck"
-        />
-        <label :for="productData.status">All statuses</label>
+      <div class="rowFlex">
+        <div>
+          <input
+            :id="productData.status"
+            type="checkbox"
+            class="styled"
+            :value="productData.status"
+            @click="$emit('clearedAll')"
+            v-model="parentData.allCheck"
+          />
+          <label :for="productData.status">All statuses</label>
+        </div>
+
       </div>
 
       <!-- Dynamic status -->
-      <div v-for="status in productData.status" :key="`${status}`">
-        <input
+      <div v-for="status in productData.status" :key="`${status}`" class="rowFlex">
+        <div>
+          <input
           :id="`${status}`"
           type="checkbox"
           class="styled"
@@ -35,7 +39,30 @@ defineProps({
         <label :for="`${status}`">
           {{ status }}
         </label>
+        </div>
+
+        <div class="legend-square" :class="calcClassColor(status)"/>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  methods: {
+    calcClassColor(status) {
+      if (status == "Launched") {
+        return "launched-bg";
+      } else if (status == "Launched (with IPU)") {
+        return "launched-ipu-bg";
+      } else if (status == "Announced") {
+        return "announced-bg";
+      } else if (status == "Discontinued") {
+        return "disontinued-bg";
+      } else {
+        return "redActual";
+      }
+    }
+  },
+};
+</script>

@@ -6,6 +6,9 @@ First, **I converted the application from vue2 to vue3.** To do this, I updated/
 
 Next, I worked on **separating the code into managable single-functionality components.** I created separate vue components for the hide-bar and the actual table. Then, I extracted the table header and made it its own component. Throughout this process, I cleaned up the redundant code.
 
+Next, I color coded each of the rows by the status and create a legend to show the colorscheme
+
+
 ## Decisions
 
 

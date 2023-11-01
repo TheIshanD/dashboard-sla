@@ -83,13 +83,13 @@ export default {
     },
     calcClassColor(status) {
       if (status == "Launched") {
-        return "released";
+        return "launched-bg";
       } else if (status == "Launched (with IPU)") {
-        return "planned";
+        return "launched-ipu-bg";
       } else if (status == "Announced") {
-        return "reference";
+        return "announced-bg";
       } else if (status == "Discontinued") {
-        return "partial";
+        return "disontinued-bg";
       } else {
         return "redActual";
       }

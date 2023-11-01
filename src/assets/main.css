@@ -174,8 +174,7 @@ th {
 .hideBar {
   list-style: none;
   display: flex;
-  /* width:min-content;
-  min-width: 30%; */
+  /* width:min-content; */
 }
 
 .productColumn {
@@ -208,5 +207,45 @@ th {
 .rowFlex {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.launched-bg {
+  background-color: #deffbe;
+}
+
+.launched-ipu-bg {
+  background-color: #dea2ff;
+}
+
+.announced-bg {
+  background-color: #9fcaff;
+}
+
+.disontinued-bg {
+  background-color: #ffb5b5;
+}
+
+.launched-text {
+  color: #deffbe;
+}
+
+.launched-ipu-text {
+  color: #dea2ff;
+}
+
+.announced-text {
+  color: #9fcaff;
+}
+
+.disontinued-text {
+  color: #ffb5b5;
+}
+
+.legend-square {
+  width: 12px;
+  height: 12px;
+  border: 3px solid black;
+  margin-left: 20px;
 }
