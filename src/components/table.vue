@@ -1,5 +1,5 @@
 <script setup>
-import TableData from "./tableData.vue";
+import TableData from "./TableData.vue";
 </script>
 
 <template>
