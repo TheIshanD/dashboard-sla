@@ -4,6 +4,8 @@
 
 First, **I converted the application from vue2 to vue3.** To do this, I updated/removed/added dependencies in *package.json* and changed some of the base code in main.js.
 
+Next, I worked on **separating the code into managable single-functionality components.** I created separate vue components for the hide-bar and the actual table. Then, I extracted the table header and made it its own component. Throughout this process, I cleaned up the redundant code.
+
 ## Decisions
 
 
