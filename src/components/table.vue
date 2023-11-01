@@ -6,12 +6,17 @@ import HideBar from "./HideBar.vue";
 <template>
   <div>
     <!-- Hide By status Bar -->
-    <HideBar
-      :product-data="productDataBystatus"
-      :parent-data="this"
-      @clearedAll="hideShowALLstatus"
-    />
+    <div class="rowFlex">
+      <HideBar
+        :product-data="productDataBystatus"
+        :parent-data="this"
+        @clearedAll="hideShowALLstatus"
+      />
 
+      <p>Search Bar</p>
+
+      <h1>&lt; 1-100 out of 12352 &gt;</h1>
+    </div>
     <!-- Main Table Design -->
     <TableData :product-data="productDataBystatus" />
     <!-- End of Table Design -->

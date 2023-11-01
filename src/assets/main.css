@@ -12,6 +12,10 @@ input[type="text"] {
   border: 0;
 }
 
+body {
+  padding: 20px;
+}
+
 .fas.fa-times {
   display: none;
 }
@@ -42,6 +46,7 @@ input[type="text"] {
 table {
   width: 100%;
   white-space: nowrap !important;
+  margin-top: 30px;
 }
 
 table td {
@@ -169,6 +174,8 @@ th {
 .hideBar {
   list-style: none;
   display: flex;
+  /* width:min-content;
+  min-width: 30%; */
 }
 
 .productColumn {
@@ -179,6 +186,8 @@ th {
 .checkbox {
   list-style: none;
   display: flex;
+  flex-direction: column;
+
 }
 
 .checkbox label {
@@ -194,4 +203,10 @@ th {
 .width1 {
   width: 1%;
   /* white-space: nowrap !important; */
+}
+
+.rowFlex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }

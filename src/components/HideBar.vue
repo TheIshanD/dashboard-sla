@@ -11,15 +11,17 @@ defineProps({
     <label class="hideLabel"> Hide: </label>
     <div class="checkbox">
       <!-- All status -->
-      <input
-        :id="productData.status"
-        type="checkbox"
-        class="styled"
-        :value="productData.status"
-        @click="$emit('clearedAll')"
-        v-model="parentData.allCheck"
-      />
-      <label :for="productData.status">All statuses</label>
+      <div>
+        <input
+          :id="productData.status"
+          type="checkbox"
+          class="styled"
+          :value="productData.status"
+          @click="$emit('clearedAll')"
+          v-model="parentData.allCheck"
+        />
+        <label :for="productData.status">All statuses</label>
+      </div>
 
       <!-- Dynamic status -->
       <div v-for="status in productData.status" :key="`${status}`">
