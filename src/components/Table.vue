@@ -87,21 +87,7 @@ export default {
         // push status to set
         statusSet.add(status);
 
-        if (!productName.includes(this.filterData.searchString)) return;
-        if (this.filterData.minCores > cores) return;
-        if (this.filterData.maxCores < cores) return;
-
-        if (this.filterData.minLitho > litho) return;
-        if (this.filterData.maxLitho < litho) return;
-
-        if (this.filterData.minThreads > threads) return;
-        if (this.filterData.maxThreads < threads) return;
-
-        if (this.filterData.minBase > base) return;
-        if (this.filterData.maxBase < base) return;
-
-        if (this.filterData.minTurbo > turbo) return;
-        if (this.filterData.maxTurbo < turbo) return;
+        if (!this.matchesFilter(this.filterData, element)) return;
 
         if (this.hidestatus.includes(status)) return; // Hide by status
         this.totalProducts++;
@@ -173,6 +159,25 @@ export default {
         this.pageIndex--;
       }
     },
+    matchesFilter(filterData, element) {
+        if (!element.Product.includes(filterData.searchString)) return false;
+        if (filterData.minCores > element.Cores) return false;
+        if (filterData.maxCores < element.Cores) return false;
+
+        if (filterData.minLitho > element.Lithography) return false;
+        if (filterData.maxLitho < element.Lithography) return false;
+
+        if (filterData.minThreads > element.Threads) return false;
+        if (filterData.maxThreads < element.Threads) return false;
+
+        if (filterData.minBase > element.Base_Freq) return false;
+        if (filterData.maxBase < element.Base_Freq) return false;
+
+        if (filterData.minTurbo > element.Max_Turbo_Freq) return false;
+        if (filterData.maxTurbo < element.Max_Turbo_Freq) return false;
+
+        return true;
+    }
   },
 };
 </script>
