@@ -249,3 +249,9 @@ th {
   border: 3px solid black;
   margin-left: 20px;
 }
+
+.colFlex {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
