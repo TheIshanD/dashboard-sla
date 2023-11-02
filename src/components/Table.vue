@@ -76,20 +76,14 @@ export default {
       let statusSet = new Set();
 
       data.forEach((element, index) => {
-        let productName = element.Product;
         let status = element.Status;
         let cores = element.Cores;
-        let litho = element.Lithography;
-        let threads = element.Threads;
-        let base = element.Base_Freq;
-        let turbo = element.Max_Turbo_Freq;
 
         // push status to set
         statusSet.add(status);
 
-        if (!this.matchesFilter(this.filterData, element)) return;
+        if (!this.matchesFilter(this.filterData, this.hidestatus, element)) return;
 
-        if (this.hidestatus.includes(status)) return; // Hide by status
         this.totalProducts++;
 
         if (!tmp[status]) tmp[status] = {};
@@ -105,12 +99,10 @@ export default {
 
       let answer = {};
       let rowNumber = 0;
-
       statusSet.forEach((status) => {
         for (const cores in tmp[status]) {
           tmp[status][cores].forEach((product, index) => {
             rowNumber++;
-            // console.log(rowNumber + " " + this.startDataIndex)
             if (rowNumber < this.startDataIndex) return;
             if (rowNumber > this.endDataIndex) return;
 
@@ -159,7 +151,7 @@ export default {
         this.pageIndex--;
       }
     },
-    matchesFilter(filterData, element) {
+    matchesFilter(filterData, hideStatus, element) {
         if (!element.Product.includes(filterData.searchString)) return false;
         if (filterData.minCores > element.Cores) return false;
         if (filterData.maxCores < element.Cores) return false;
@@ -175,6 +167,8 @@ export default {
 
         if (filterData.minTurbo > element.Max_Turbo_Freq) return false;
         if (filterData.maxTurbo < element.Max_Turbo_Freq) return false;
+
+        if (hideStatus.includes(element.Status)) return false; // Hide by status
 
         return true;
     }

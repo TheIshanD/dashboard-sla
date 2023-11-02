@@ -84,7 +84,7 @@ defineProps({
           id="min-base-filter"
           placeholder="0"
           type="number"
-          oninput="validity.valid||(value='');"
+          onkeyup="if (this.value < 0) {this.value = this.value * -1}"
         />
       </div>
 
@@ -94,7 +94,7 @@ defineProps({
           id="max-base-filter"
           placeholder="Infinity"
           type="number"
-          oninput="validity.valid||(value='');"
+          onkeyup="if (this.value < 0) {this.value = this.value * -1}"
         />
       </div>
     </div>
@@ -106,7 +106,7 @@ defineProps({
           id="min-turbo-filter"
           placeholder="0"
           type="number"
-          oninput="validity.valid||(value='');"
+          onkeyup="if (this.value < 0) {this.value = this.value * -1}"
         />
       </div>
 
@@ -116,7 +116,7 @@ defineProps({
           id="max-turbo-filter"
           placeholder="Infinity"
           type="number"
-          oninput="validity.valid||(value='');"
+          onkeyup="if (this.value < 0) {this.value = this.value * -1}"
         />
       </div>
     </div>
@@ -141,10 +141,10 @@ export default {
       this.parentFilterData.maxLitho = document.querySelector("#max-litho-filter").value == "" ? 1000 : parseInt(document.querySelector("#max-litho-filter").value);
       this.parentFilterData.minThreads = document.querySelector("#min-threads-filter").value == "" ? 0 : parseInt(document.querySelector("#min-threads-filter").value);
       this.parentFilterData.maxThreads = document.querySelector("#max-threads-filter").value == "" ? 1000 : parseInt(document.querySelector("#max-threads-filter").value);
-      this.parentFilterData.minBase = document.querySelector("#min-base-filter").value == "" ? 0 : parseInt(document.querySelector("#min-base-filter").value);
-      this.parentFilterData.maxBase = document.querySelector("#max-base-filter").value == "" ? 1000 : parseInt(document.querySelector("#max-base-filter").value);
-      this.parentFilterData.minTurbo = document.querySelector("#min-turbo-filter").value == "" ? 0 : parseInt(document.querySelector("#min-turbo-filter").value);
-      this.parentFilterData.maxTurbo = document.querySelector("#max-turbo-filter").value == "" ? 1000 : parseInt(document.querySelector("#max-turbo-filter").value);
+      this.parentFilterData.minBase = document.querySelector("#min-base-filter").value == "" ? 0 : parseFloat(document.querySelector("#min-base-filter").value);
+      this.parentFilterData.maxBase = document.querySelector("#max-base-filter").value == "" ? 1000 : parseFloat(document.querySelector("#max-base-filter").value);
+      this.parentFilterData.minTurbo = document.querySelector("#min-turbo-filter").value == "" ? 0 : parseFloat(document.querySelector("#min-turbo-filter").value);
+      this.parentFilterData.maxTurbo = document.querySelector("#max-turbo-filter").value == "" ? 1000 : parseFloat(document.querySelector("#max-turbo-filter").value);
     },
   },
 };
