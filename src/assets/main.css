@@ -256,6 +256,51 @@ th {
   gap: 5px;
 }
 
+.right-header-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 30%;
+  text-align: center;
+  align-items: center;
+  gap: 75px
+}
+
+.pagination-box {
+  width: 100%;
+  font-size: x-large;
+}
+
+.pagination-box span {
+  font-weight: 900;
+  color: #000000;
+}
+
 .pagination-buttons {
   width: 150px;
+}
+
+.button {
+  background: #ADD8E6;
+  height: 30px;
+  font-weight: 900;
+}
+
+.button:hover {
+  background: #AFFAF8;
+}
+
+.large-text {
+  font-size: 25px;
+}
+
+.input-box {
+  width: 45%
+}
+
+.header-row-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }

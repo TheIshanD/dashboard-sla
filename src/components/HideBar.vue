@@ -7,7 +7,7 @@ defineProps({
 
 <template>
   <!-- Hide By status Bar -->
-  <div class="hideBar">
+  <div class="hideBar large-text">
     <label class="hideLabel">Hide: </label>
     <div class="checkbox">
       <!-- All status -->

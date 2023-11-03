@@ -7,28 +7,30 @@ import SearchBar from "./SearchBar.vue";
 <template>
   <div>
     <!-- Hide By status Bar -->
-    <div class="rowFlex">
-      <HideBar
-        :product-data="productDataBystatus"
-        :parent-data="this"
-        @clearedAll="hideShowALLstatus"
-      />
-
+    <div class="header-row-flex ">
       <SearchBar :parent-filter-data="this.filterData" />
 
-      <div class="colFlex">
-        <h2>
-          Showing products {{ startDataIndex }}-{{ endDataIndex }} out of
-          {{ totalProducts }}
-        </h2>
-        <div class="rowFlex">
-          <button @click="prevPage" class="pagination-buttons">
-            <font-awesome-icon icon="arrow-left" /> Previous Page
-          </button>
-          <button @click="nextPage" class="pagination-buttons">
-            Next Page <font-awesome-icon icon="arrow-right" />
-          </button>
+      <div class="right-header-box">
+        <div class="pagination-box">
+          <p>
+            Showing products <span>{{ startDataIndex }}-{{ endDataIndex }}</span> out of
+            <span>{{ totalProducts }}</span>
+          </p>
+          <div class="rowFlex">
+            <button @click="prevPage" class="pagination-buttons button">
+              <font-awesome-icon icon="arrow-left" /> Previous Page
+            </button>
+            <button @click="nextPage" class="pagination-buttons button">
+              Next Page <font-awesome-icon icon="arrow-right" />
+            </button>
+          </div>
         </div>
+
+        <HideBar
+          :product-data="productDataBystatus"
+          :parent-data="this"
+          @clearedAll="hideShowALLstatus"
+        />
       </div>
     </div>
     <!-- Main Table Design -->
