@@ -17,13 +17,17 @@ import SearchBar from "./SearchBar.vue";
       <SearchBar :parent-filter-data="this.filterData" />
 
       <div class="colFlex">
-        <p>
+        <h2>
           Showing products {{ startDataIndex }}-{{ endDataIndex }} out of
           {{ totalProducts }}
-        </p>
+        </h2>
         <div class="rowFlex">
-          <button @click="prevPage">previous</button>
-          <button @click="nextPage">next</button>
+          <button @click="prevPage" class="pagination-buttons">
+            <font-awesome-icon icon="arrow-left" /> Previous Page
+          </button>
+          <button @click="nextPage" class="pagination-buttons">
+            Next Page <font-awesome-icon icon="arrow-right" />
+          </button>
         </div>
       </div>
     </div>
@@ -82,7 +86,8 @@ export default {
         // push status to set
         statusSet.add(status);
 
-        if (!this.matchesFilter(this.filterData, this.hidestatus, element)) return;
+        if (!this.matchesFilter(this.filterData, this.hidestatus, element))
+          return;
 
         this.totalProducts++;
 
@@ -152,26 +157,26 @@ export default {
       }
     },
     matchesFilter(filterData, hideStatus, element) {
-        if (!element.Product.includes(filterData.searchString)) return false;
-        if (filterData.minCores > element.Cores) return false;
-        if (filterData.maxCores < element.Cores) return false;
+      if (!element.Product.includes(filterData.searchString)) return false;
+      if (filterData.minCores > element.Cores) return false;
+      if (filterData.maxCores < element.Cores) return false;
 
-        if (filterData.minLitho > element.Lithography) return false;
-        if (filterData.maxLitho < element.Lithography) return false;
+      if (filterData.minLitho > element.Lithography) return false;
+      if (filterData.maxLitho < element.Lithography) return false;
 
-        if (filterData.minThreads > element.Threads) return false;
-        if (filterData.maxThreads < element.Threads) return false;
+      if (filterData.minThreads > element.Threads) return false;
+      if (filterData.maxThreads < element.Threads) return false;
 
-        if (filterData.minBase > element.Base_Freq) return false;
-        if (filterData.maxBase < element.Base_Freq) return false;
+      if (filterData.minBase > element.Base_Freq) return false;
+      if (filterData.maxBase < element.Base_Freq) return false;
 
-        if (filterData.minTurbo > element.Max_Turbo_Freq) return false;
-        if (filterData.maxTurbo < element.Max_Turbo_Freq) return false;
+      if (filterData.minTurbo > element.Max_Turbo_Freq) return false;
+      if (filterData.maxTurbo < element.Max_Turbo_Freq) return false;
 
-        if (hideStatus.includes(element.Status)) return false; // Hide by status
+      if (hideStatus.includes(element.Status)) return false; // Hide by status
 
-        return true;
-    }
+      return true;
+    },
   },
 };
 </script>
