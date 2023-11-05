@@ -49,12 +49,21 @@ Then, once all the packages we need are installed, we want to be able to run the
 ```sh
 npm run dev
 ```
+Congrats! You should now have a development view of the project.
 
-Finally, in order to export the project for a production use, use the following code in your project terminal to compile and minify the project.
+---
+
+If you want to export the project for a production use, use the following code in your project terminal to compile and minify the project. This should create a folder called dist, holding the minified version of your project.
 ```sh
 npm run build
 ```
 
+Finally, if you want to run the built project locally, you can do the following steps. Run the following code in the project terminal and then navigate to the local host network the project is being hosted on.
+
+```sh
+npx serve -s dist
+```
+Congrats! The build version of the project is running!
 ## Bonus Features
 
 One of the biggest bonus features that I created was the implementation of the extra filtering criteria. For someone who is trying to search for a very specific product or group of products, having this filter is invaluable as it helps them from searching through thousands (or perhaps more) products individually. This filtering criteria will only accept valid input automatically (strings for string input, positive integers for integer input, and positive decimals for decimal input).
