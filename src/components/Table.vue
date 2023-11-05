@@ -9,14 +9,21 @@ import Pagination from "./Pagination.vue";
   <div>
     <!-- the header of the page -->
     <div class="header-row-flex">
-      <SearchBar :parent-filter-data="this.filterData" />
-
+      <SearchBar :parent-filter-data="filterData" />
       <div class="right-header-box">
-        <Pagination :parent-data="this" />
+        <Pagination
+          :start-data-index="startDataIndex"
+          :end-data-index="endDataIndex"
+          :total-products="totalProducts"
+          :pageIndex="pageIndex"
+          @previousPage="prevPage"
+          @nextPage="nextPage"
+        />
 
         <HideBar
           :product-data="productDataByStatus"
-          :parent-data="this"
+          :all-check="allCheck"
+          :hide-status="hidestatus"
           @clearedAll="hideShowAllStatus"
         />
       </div>
@@ -133,11 +140,21 @@ export default {
       // if its not checked, then unhide everything
       if (!document.querySelector(".styled").checked) {
         this.hidestatus = [];
+
+        const checkboxes = document.querySelectorAll(".specific-checkbox");
+        checkboxes.forEach((checkbox) => {
+          checkbox.checked = false;
+        })
       }
 
       // otherwise hide everything
       if (document.querySelector(".styled").checked) {
         this.hidestatus = this.productDataByStatus.status;
+
+        const checkboxes = document.querySelectorAll(".specific-checkbox");
+        checkboxes.forEach((checkbox) => {
+          checkbox.checked = true;
+        })
       }
 
       this.allCheck = !this.allCheck;
@@ -168,6 +185,20 @@ export default {
       if (hideStatus.includes(element.Status)) return false;
 
       return true;
+    },
+    nextPage() {
+      if (
+        this.pageIndex * 100 + 101 <=
+        this.totalProducts
+      ) {
+        this.pageIndex++;
+      }
+    },
+    // go to the previous page if it is valid
+    prevPage() {
+      if (this.pageIndex > 0) {
+        this.pageIndex--;
+      }
     },
   },
 };

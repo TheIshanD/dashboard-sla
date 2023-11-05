@@ -1,7 +1,8 @@
 <script setup>
 defineProps({
   productData: Object,
-  parentData: Object,
+  allCheck: Boolean,
+  hideStatus: Array,
 });
 </script>
 
@@ -16,10 +17,9 @@ defineProps({
           <input
             :id="productData.status"
             type="checkbox"
-            class="styled"
+            class="styled hide-all-checkbox"
             :value="productData.status"
             @click="$emit('clearedAll')"
-            v-model="parentData.allCheck"
           />
           <label :for="productData.status">All statuses</label>
         </div>
@@ -35,9 +35,9 @@ defineProps({
           <input
             :id="`${status}`"
             type="checkbox"
-            class="styled"
+            class="styled specific-checkbox"
             :value="status"
-            v-model="parentData.hidestatus"
+            @click="toggleParticularStatus(status)"
           />
           <label :for="`${status}`">
             {{ status }}
@@ -53,6 +53,7 @@ defineProps({
 
 <script>
 export default {
+  props: ['hideStatus'],
   methods: {
     // find the class to be given to a row, given the status
     calcClassColor(status) {
@@ -68,6 +69,14 @@ export default {
         return "redActual";
       }
     },
+    toggleParticularStatus(status) {
+      if (this.hideStatus.includes(status)) {
+        this.hideStatus.splice(this.hideStatus.indexOf(status), 1)
+        document.querySelector(".styled").checked = false;
+      } else {
+        this.hideStatus.push(status);
+      }
+    }
   },
 };
 </script>
