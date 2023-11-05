@@ -9,7 +9,7 @@ defineProps({
     <p>
       Showing products <span>{{ parentData.startDataIndex }}-{{ parentData.endDataIndex }}</span> out
       of
-      <span>{{ totalProducts }}</span>
+      <span>{{ parentData.totalProducts }}</span>
     </p>
     <div class="rowFlex">
       <button @click="prevPage" class="pagination-buttons button">
