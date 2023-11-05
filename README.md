@@ -10,28 +10,55 @@ Next, **I color coded each of the rows by the status and create a legend to show
 
 Next, **I implemented some pagination functionality.** I created a button on the top right in order to look at pages of the data 100 products at a time.
 
+Next, **I created a search bar to be able to search for items given a string.** Then, only the product names that contain the string will be shown.
+
+Next, **I created some filtering criteria**, so that a user can filter out certain products that do not match their criteria. I created a way for the user to
+filter out each criteria that is shown to them. 
 
 ## Decisions
 
 A decision I made when implementing pagination was to maintain a sorted ordering of the rows in the table by status. If I were to disregard the order, I could simply implement pagination while reading in the data file. However, to maintain order, I first read in all the products in the data, kept track of the statuses, and sorted them based on that. Then, I only retained the products with indicies relavent to the current page.
 
+-----
+
+I had to decide when implementing the filtering criteria how I would go about doing it. I could have extended the criteria to account for other attributes of the products
+that were not explicity shown to the user in the table. However, I did not think this was a good idea for two reasons.
+
+1. The presence of N/A
+2. The fact that the user cannot see them
+
+This might have led to misunderstanding and more confusion from the user. 
 
 ## Local Setup
+
+To run this application locally, you must clone the app onto your local machine, install the dependencies, and then run it.
+
+First, lets clone the app using the following code in your terminal. You can get the cloning link from repository on GitHub. [I need help cloning a repository on GitHub.](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
+```
+git clone <repository_link>
+```
+
+Next, after sucessfully cloning the repository, we need to install the dependencies. To do this, run npm install in your project terminal (make sure you have node and npm installed).  [I need help installing Node.js and npm.](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+Then, once all the packages we need are installed, we want to be able to run the project for development. To do this, use the following code in your project terminal. 
 
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
-
+Finally, in order to export the project for a production use, use the following code in your project terminal to compile and minify the project.
 ```sh
 npm run build
 ```
 
 ## Bonus Features
+
+One of the biggest bonus features that I created was the implementation of the extra filtering criteria. For someone who is trying to search for a very specific product or group of products, having this filter is invaluable as it helps them from searching through thousands (or perhaps more) products individually. This filtering criteria will only accept valid input automatically (strings for string input, positive integers for integer input, and positive decimals for decimal input).
+
+I changed some of the layout of the hide bar and the general layout of the header and the page to make the page more visually pleasing and easier to navigate.
+
+I changed the favicon and html title to fit the page.
