@@ -1,5 +1,5 @@
 <template>
-  <div class="col-flex">
+  <div class="col-flex filter-box">
     <!-- make the search filter -->
     <label for="product-filter">
       Search for products (product name contains string)

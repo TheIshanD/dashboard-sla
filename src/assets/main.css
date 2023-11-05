@@ -153,6 +153,10 @@ th {
   width: 45%;
 }
 
+.filter-box {
+  width: 400px;
+}
+
 .header-row-flex {
   display: flex;
   flex-direction: row;
