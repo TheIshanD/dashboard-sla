@@ -35,7 +35,7 @@ import SearchBar from "./SearchBar.vue";
     </div>
     <!-- Main Table Design -->
     <TableData :product-data="productDataBystatus" />
-    <!-- End of Table Design -->s
+    <!-- End of Table Design -->
   </div>
 </template>
 
@@ -159,7 +159,7 @@ export default {
       }
     },
     matchesFilter(filterData, hideStatus, element) {
-      if (!element.Product.includes(filterData.searchString)) return false;
+      if (!element.Product.toLowerCase().includes(filterData.searchString.toLowerCase())) return false;
       if (filterData.minCores > element.Cores) return false;
       if (filterData.maxCores < element.Cores) return false;
 
