@@ -7,23 +7,22 @@ import Pagination from "./Pagination.vue";
 
 <template>
   <div>
-    <!-- Hide By status Bar -->
-    <div class="header-row-flex ">
+    <!-- the header of the page -->
+    <div class="header-row-flex">
       <SearchBar :parent-filter-data="this.filterData" />
 
       <div class="right-header-box">
-        <Pagination :parent-data="this"/>
+        <Pagination :parent-data="this" />
 
         <HideBar
           :product-data="productDataBystatus"
           :parent-data="this"
-          @clearedAll="hideShowALLstatus"
+          @clearedAll="hideShowAllStatus"
         />
       </div>
     </div>
-    <!-- Main Table Design -->
+
     <TableData :product-data="productDataBystatus" />
-    <!-- End of Table Design -->
   </div>
 </template>
 
@@ -56,12 +55,15 @@ export default {
     this.UIData = data;
   },
   computed: {
+    // compute the starting index (1-indexed for display)
     startDataIndex() {
       return Math.min(this.pageIndex * 100 + 1, this.totalProducts);
     },
+    // compute the ending index (1-indexed for display)
     endDataIndex() {
       return Math.min(this.pageIndex * 100 + 100, this.totalProducts);
     },
+    // compute the products, given requirements of user
     productDataBystatus() {
       const oldTotalProducts = this.totalProducts;
       this.totalProducts = 0;
@@ -76,6 +78,7 @@ export default {
         // push status to set
         statusSet.add(status);
 
+        // filter out any products not specified by the filter
         if (!this.matchesFilter(this.filterData, this.hidestatus, element))
           return;
 
@@ -92,6 +95,9 @@ export default {
       const sortedStringsArray = [...strings].sort().reverse();
       statusSet = new Set(sortedStringsArray);
 
+      // now we must rearrange the products so that they can maintain a sorted order by status AND
+      // so that we can deterministically use pagination to show certain indicies
+      // (filter out those indicies not being shown)
       let answer = {};
       let rowNumber = 0;
       statusSet.forEach((status) => {
@@ -109,6 +115,8 @@ export default {
         }
       });
 
+      // if the number of products changed, then some filtering factor must have changed
+      // reset the pageIndex back to 0
       if (oldTotalProducts != this.totalProducts) {
         this.pageIndex = 0;
       }
@@ -120,34 +128,28 @@ export default {
     },
   },
   methods: {
-    hideShowALLstatus() {
+    // hide everything or unhide eeverything
+    hideShowAllStatus() {
+      // if its not checked, then unhide everything
       if (!document.querySelector(".styled").checked) {
         this.hidestatus = [];
       }
 
+      // otherwise hide everything
       if (document.querySelector(".styled").checked) {
         this.hidestatus = this.productDataBystatus.status;
       }
 
       this.allCheck = !this.allCheck;
-
-      if (this.allCheck) {
-      } else {
-        this.hidestatus = [];
-      }
     },
-    nextPage() {
-      if (this.pageIndex * 100 + 101 <= this.totalProducts) {
-        this.pageIndex++;
-      }
-    },
-    prevPage() {
-      if (this.pageIndex > 0) {
-        this.pageIndex--;
-      }
-    },
+    // check if the filter is filtering out an element or not
     matchesFilter(filterData, hideStatus, element) {
-      if (!element.Product.toLowerCase().includes(filterData.searchString.toLowerCase())) return false;
+      if (
+        !element.Product.toLowerCase().includes(
+          filterData.searchString.toLowerCase()
+        )
+      )
+        return false;
       if (filterData.minCores > element.Cores) return false;
       if (filterData.maxCores < element.Cores) return false;
 
@@ -163,7 +165,7 @@ export default {
       if (filterData.minTurbo > element.Max_Turbo_Freq) return false;
       if (filterData.maxTurbo < element.Max_Turbo_Freq) return false;
 
-      if (hideStatus.includes(element.Status)) return false; // Hide by status
+      if (hideStatus.includes(element.Status)) return false;
 
       return true;
     },

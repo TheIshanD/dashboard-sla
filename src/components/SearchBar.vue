@@ -6,11 +6,13 @@ defineProps({
 
 <template>
   <div class="col-flex">
-    <label for="product-filter"
-      >Search for products (product name contains string)</label
-    >
+    <!-- make the search filter -->
+    <label for="product-filter">
+      Search for products (product name contains string)
+    </label>
     <input id="product-filter" placeholder="" />
 
+    <!-- the cores filter row -->
     <div class="row-flex">
       <div class="col-flex input-box">
         <label for="min-cores-filter">Minimum Cores?</label>
@@ -33,6 +35,7 @@ defineProps({
       </div>
     </div>
 
+    <!-- the lithography filter row -->
     <div class="row-flex">
       <div class="col-flex input-box">
         <label for="min-litho-filter">Minimum Lithography?</label>
@@ -55,6 +58,7 @@ defineProps({
       </div>
     </div>
 
+    <!-- the thread filter row -->
     <div class="row-flex">
       <div class="col-flex input-box">
         <label for="min-threads-filter">Minimum Threads?</label>
@@ -77,6 +81,7 @@ defineProps({
       </div>
     </div>
 
+    <!-- the base frequency filter row -->
     <div class="row-flex">
       <div class="col-flex input-box">
         <label for="min-base-filter">Minimum Base Freq.?</label>
@@ -99,6 +104,7 @@ defineProps({
       </div>
     </div>
 
+    <!-- the turbo frequency row -->
     <div class="row-flex">
       <div class="col-flex input-box">
         <label for="min-turbo-filter">Minimum Turbo Freq.?</label>
@@ -128,11 +134,9 @@ defineProps({
 <script>
 export default {
   props: ["parentFilterData"],
-  data: function () {
-    return {};
-  },
-  computed: {},
   methods: {
+    // access all the given filtering parameters and update the filter variables to match those parameters
+    // its important to check if the input was empty everything and then to it to its valid type
     applyFilter() {
       this.parentFilterData.searchString =
         document.querySelector("#product-filter").value;

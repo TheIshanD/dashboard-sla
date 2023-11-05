@@ -12,7 +12,7 @@ defineProps({
       <template v-for="(data, status, index) in productData.data">
         <!-- status -->
         <tr :class="calcClassColor(status)">
-          <td class="width1" :rowspan="calstatusRowspan(data)">
+          <td class="width1" :rowspan="calcStatusRowspan(data)">
             {{ status }}
           </td>
         </tr>
@@ -25,7 +25,10 @@ defineProps({
             </td>
           </tr>
 
-          <tr v-for="(productInfo, k) in data[cores]" :class="calcClassColor(status)">
+          <tr
+            v-for="(productInfo, k) in data[cores]"
+            :class="calcClassColor(status)"
+          >
             <!-- product -->
             <td>{{ productInfo.Product }}</td>
 
@@ -74,13 +77,15 @@ defineProps({
 <script>
 export default {
   methods: {
-    calstatusRowspan(data) {
+    // calculate how many rows the status should take up
+    calcStatusRowspan(data) {
       let sum = Object.keys(data).length + 1;
       for (const cores in data) {
         sum += Object.keys(data[cores]).length;
       }
       return sum;
     },
+    // find the class to be given to a row, given the status
     calcClassColor(status) {
       if (status == "Launched") {
         return "launched-bg";
@@ -93,7 +98,7 @@ export default {
       } else {
         return "redActual";
       }
-    }
+    },
   },
 };
 </script>

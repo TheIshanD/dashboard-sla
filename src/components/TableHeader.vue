@@ -30,11 +30,13 @@ export default {
     this.wwInfo = this.getWWFromDate();
   },
   computed: {
+    // compute the wwData
     wwData() {
       return `${this.wwInfo.year}WW${this.wwInfo.workweek}.${this.wwInfo.numofday}`;
     },
   },
   methods: {
+    // compute some date information
     getWWFromDate(date = null) {
       let currentDate = date || new Date();
       let startDate = new Date(currentDate.getFullYear(), 0, 1);

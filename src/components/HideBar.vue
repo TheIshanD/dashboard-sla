@@ -23,25 +23,29 @@ defineProps({
           />
           <label :for="productData.status">All statuses</label>
         </div>
-
       </div>
 
       <!-- Dynamic status -->
-      <div v-for="status in productData.status" :key="`${status}`" class="row-flex">
+      <div
+        v-for="status in productData.status"
+        :key="`${status}`"
+        class="row-flex"
+      >
         <div>
           <input
-          :id="`${status}`"
-          type="checkbox"
-          class="styled"
-          :value="status"
-          v-model="parentData.hidestatus"
-        />
-        <label :for="`${status}`">
-          {{ status }}
-        </label>
+            :id="`${status}`"
+            type="checkbox"
+            class="styled"
+            :value="status"
+            v-model="parentData.hidestatus"
+          />
+          <label :for="`${status}`">
+            {{ status }}
+          </label>
         </div>
 
-        <div class="legend-square" :class="calcClassColor(status)"/>
+        <!-- add the squares that indicate the color of the status -->
+        <div class="legend-square" :class="calcClassColor(status)" />
       </div>
     </div>
   </div>
@@ -50,6 +54,7 @@ defineProps({
 <script>
 export default {
   methods: {
+    // find the class to be given to a row, given the status
     calcClassColor(status) {
       if (status == "Launched") {
         return "launched-bg";
@@ -62,7 +67,7 @@ export default {
       } else {
         return "redActual";
       }
-    }
+    },
   },
 };
 </script>

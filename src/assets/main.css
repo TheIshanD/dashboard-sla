@@ -118,7 +118,7 @@ th {
   width: 30%;
   text-align: center;
   align-items: center;
-  gap: 75px
+  gap: 75px;
 }
 
 .pagination-box {
@@ -136,13 +136,13 @@ th {
 }
 
 .button {
-  background: #ADD8E6;
+  background: #add8e6;
   height: 30px;
   font-weight: 900;
 }
 
 .button:hover {
-  background: #AFFAF8;
+  background: #affaf8;
 }
 
 .large-text {
@@ -150,7 +150,7 @@ th {
 }
 
 .input-box {
-  width: 45%
+  width: 45%;
 }
 
 .header-row-flex {
