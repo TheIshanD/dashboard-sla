@@ -15,14 +15,14 @@ import Pagination from "./Pagination.vue";
         <Pagination :parent-data="this" />
 
         <HideBar
-          :product-data="productDataBystatus"
+          :product-data="productDataByStatus"
           :parent-data="this"
           @clearedAll="hideShowAllStatus"
         />
       </div>
     </div>
 
-    <TableData :product-data="productDataBystatus" />
+    <TableData :product-data="productDataByStatus" />
   </div>
 </template>
 
@@ -64,7 +64,7 @@ export default {
       return Math.min(this.pageIndex * 100 + 100, this.totalProducts);
     },
     // compute the products, given requirements of user
-    productDataBystatus() {
+    productDataByStatus() {
       const oldTotalProducts = this.totalProducts;
       this.totalProducts = 0;
       let tmp = {};
@@ -137,7 +137,7 @@ export default {
 
       // otherwise hide everything
       if (document.querySelector(".styled").checked) {
-        this.hidestatus = this.productDataBystatus.status;
+        this.hidestatus = this.productDataByStatus.status;
       }
 
       this.allCheck = !this.allCheck;
