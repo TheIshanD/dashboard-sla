@@ -11,7 +11,7 @@ defineProps({
       of
       <span>{{ parentData.totalProducts }}</span>
     </p>
-    <div class="rowFlex">
+    <div class="row-flex">
       <button @click="prevPage" class="pagination-buttons button">
         <font-awesome-icon icon="arrow-left" /> Previous Page
       </button>

@@ -7,11 +7,11 @@ defineProps({
 
 <template>
   <!-- Hide By status Bar -->
-  <div class="hideBar large-text">
-    <label class="hideLabel">Hide: </label>
+  <div class="hide-bar large-text">
+    <label>Hide: </label>
     <div class="checkbox">
       <!-- All status -->
-      <div class="rowFlex">
+      <div class="row-flex">
         <div>
           <input
             :id="productData.status"
@@ -27,7 +27,7 @@ defineProps({
       </div>
 
       <!-- Dynamic status -->
-      <div v-for="status in productData.status" :key="`${status}`" class="rowFlex">
+      <div v-for="status in productData.status" :key="`${status}`" class="row-flex">
         <div>
           <input
           :id="`${status}`"
