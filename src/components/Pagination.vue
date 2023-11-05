@@ -18,10 +18,18 @@ defineProps({
     </p>
     <!-- the pagination buttons -->
     <div class="row-flex">
-      <button @click="$emit('previousPage')" class="pagination-buttons button">
+      <button
+        @click="$emit('previousPage')"
+        class="pagination-buttons button"
+        :disabled="pageIndex <= 0"
+      >
         <font-awesome-icon icon="arrow-left" /> Previous Page
       </button>
-      <button @click="$emit('nextPage')" class="pagination-buttons button">
+      <button
+        @click="$emit('nextPage')"
+        class="pagination-buttons button"
+        :disabled="pageIndex >= Math.floor((totalProducts - 1) / 100)"
+      >
         Next Page <font-awesome-icon icon="arrow-right" />
       </button>
     </div>

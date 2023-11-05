@@ -144,7 +144,7 @@ export default {
         const checkboxes = document.querySelectorAll(".specific-checkbox");
         checkboxes.forEach((checkbox) => {
           checkbox.checked = false;
-        })
+        });
       }
 
       // otherwise hide everything
@@ -154,7 +154,7 @@ export default {
         const checkboxes = document.querySelectorAll(".specific-checkbox");
         checkboxes.forEach((checkbox) => {
           checkbox.checked = true;
-        })
+        });
       }
 
       this.allCheck = !this.allCheck;
@@ -188,10 +188,7 @@ export default {
     },
     // go to the next page if it is valid
     nextPage() {
-      if (
-        this.pageIndex * 100 + 101 <=
-        this.totalProducts
-      ) {
+      if (this.pageIndex * 100 + 101 <= this.totalProducts) {
         this.pageIndex++;
       }
     },

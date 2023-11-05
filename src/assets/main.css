@@ -145,6 +145,10 @@ th {
   background: #affaf8;
 }
 
+.button:disabled {
+  background: #add8e6;
+}
+
 .large-text {
   font-size: 25px;
 }

@@ -53,7 +53,7 @@ defineProps({
 
 <script>
 export default {
-  props: ['hideStatus'],
+  props: ["hideStatus"],
   methods: {
     // find the class to be given to a row, given the status
     calcClassColor(status) {
@@ -72,12 +72,12 @@ export default {
     // toggle the current status
     toggleParticularStatus(status) {
       if (this.hideStatus.includes(status)) {
-        this.hideStatus.splice(this.hideStatus.indexOf(status), 1)
+        this.hideStatus.splice(this.hideStatus.indexOf(status), 1);
         document.querySelector(".styled").checked = false;
       } else {
         this.hideStatus.push(status);
       }
-    }
+    },
   },
 };
 </script>
