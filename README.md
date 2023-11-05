@@ -27,7 +27,7 @@ that were not explicity shown to the user in the table. However, I did not think
 1. The presence of N/A
 2. The fact that the user cannot see them
 
-This might have led to misunderstanding and more confusion from the user. 
+If I had kept those criteria in the filtering process, it might have led to misunderstanding and more confusion from the user. 
 
 ## Local Setup
 
