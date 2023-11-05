@@ -23,7 +23,7 @@ import Pagination from "./Pagination.vue";
         <HideBar
           :product-data="productDataByStatus"
           :all-check="allCheck"
-          :hide-status="hidestatus"
+          :hide-status="hideStatus"
           @clearedAll="hideShowAllStatus"
         />
       </div>
@@ -38,7 +38,7 @@ import data from "../assets/data.json";
 export default {
   data: function () {
     return {
-      hidestatus: [],
+      hideStatus: [],
       UIData: [],
       allCheck: false,
       totalProducts: data.length,
@@ -86,7 +86,7 @@ export default {
         statusSet.add(status);
 
         // filter out any products not specified by the filter
-        if (!this.matchesFilter(this.filterData, this.hidestatus, element))
+        if (!this.matchesFilter(this.filterData, this.hideStatus, element))
           return;
 
         this.totalProducts++;
@@ -139,7 +139,7 @@ export default {
     hideShowAllStatus() {
       // if its not checked, then unhide everything
       if (!document.querySelector(".styled").checked) {
-        this.hidestatus = [];
+        this.hideStatus = [];
 
         const checkboxes = document.querySelectorAll(".specific-checkbox");
         checkboxes.forEach((checkbox) => {
@@ -149,7 +149,7 @@ export default {
 
       // otherwise hide everything
       if (document.querySelector(".styled").checked) {
-        this.hidestatus = this.productDataByStatus.status;
+        this.hideStatus = this.productDataByStatus.status;
 
         const checkboxes = document.querySelectorAll(".specific-checkbox");
         checkboxes.forEach((checkbox) => {
@@ -186,6 +186,7 @@ export default {
 
       return true;
     },
+    // go to the next page if it is valid
     nextPage() {
       if (
         this.pageIndex * 100 + 101 <=

@@ -69,6 +69,7 @@ export default {
         return "redActual";
       }
     },
+    // toggle the current status
     toggleParticularStatus(status) {
       if (this.hideStatus.includes(status)) {
         this.hideStatus.splice(this.hideStatus.indexOf(status), 1)
