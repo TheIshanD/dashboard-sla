@@ -95,6 +95,12 @@ export default {
       const sortedStringsArray = [...strings].sort().reverse();
       statusSet = new Set(sortedStringsArray);
 
+      // if the number of products changed, then some filtering factor must have changed
+      // reset the pageIndex back to 0
+      if (oldTotalProducts != this.totalProducts) {
+        this.pageIndex = 0;
+      }
+
       // now we must rearrange the products so that they can maintain a sorted order by status AND
       // so that we can deterministically use pagination to show certain indicies
       // (filter out those indicies not being shown)
@@ -114,12 +120,6 @@ export default {
           });
         }
       });
-
-      // if the number of products changed, then some filtering factor must have changed
-      // reset the pageIndex back to 0
-      if (oldTotalProducts != this.totalProducts) {
-        this.pageIndex = 0;
-      }
 
       return {
         status: [...statusSet],
