@@ -1,9 +1,3 @@
-<script setup>
-defineProps({
-  parentFilterData: Object,
-});
-</script>
-
 <template>
   <div class="col-flex">
     <!-- make the search filter -->
