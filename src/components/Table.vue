@@ -2,6 +2,7 @@
 import TableData from "./TableData.vue";
 import HideBar from "./HideBar.vue";
 import SearchBar from "./SearchBar.vue";
+import Pagination from "./Pagination.vue";
 </script>
 
 <template>
@@ -11,20 +12,7 @@ import SearchBar from "./SearchBar.vue";
       <SearchBar :parent-filter-data="this.filterData" />
 
       <div class="right-header-box">
-        <div class="pagination-box">
-          <p>
-            Showing products <span>{{ startDataIndex }}-{{ endDataIndex }}</span> out of
-            <span>{{ totalProducts }}</span>
-          </p>
-          <div class="rowFlex">
-            <button @click="prevPage" class="pagination-buttons button">
-              <font-awesome-icon icon="arrow-left" /> Previous Page
-            </button>
-            <button @click="nextPage" class="pagination-buttons button">
-              Next Page <font-awesome-icon icon="arrow-right" />
-            </button>
-          </div>
-        </div>
+        <Pagination :parent-data="this"/>
 
         <HideBar
           :product-data="productDataBystatus"
